@@ -19,6 +19,7 @@ namespace MbmStore.Infrastructure
             // }
             List<Book> books = new List<Book> {
             new Book(
+                1,
                 "Steve Turner",
                 "A Hard Day's Write: The Stories Behind Every Beatles Song",
                 150.00m,
@@ -27,6 +28,7 @@ namespace MbmStore.Infrastructure
                 "6214241"
                 ),
             new Book(
+                2,
                 "That Author",
                 "A title that makes no sense!",
                 15078.00m,
@@ -45,6 +47,7 @@ namespace MbmStore.Infrastructure
             List<MusicCD> musicCDs = new List<MusicCD>
             {
                 new MusicCD(
+                    3,
                     "Beatles",
                     "Abbey Road (Remastered)",
                     128.00m,
@@ -72,6 +75,7 @@ namespace MbmStore.Infrastructure
                     }
                 ),
                 new MusicCD(
+                    4,
                     "Stuff",
                     "Things",
                     1289.00m,
@@ -100,11 +104,11 @@ namespace MbmStore.Infrastructure
 
             List<Movie> movies = new List<Movie>
             {
-                new Movie("Jungle Book", 160.50m, "Someone 1", "junglebook.jpg"),
-                new Movie("Gladiator", 99.99m, "Someone 2", "gladiator.jpg"),
-                new Movie("Forrest Gump", 129.99m, "Someone 3", "forrest-gump.jpg"),
-                new Movie("Nocturne",190.56m,"Zu Quirke","nocturne.jpg"),
-                new Movie("All my friends are dead",180.45m,"Jan Belcl","deadfriends.jpg")
+                new Movie(5, "Jungle Book", 160.50m, "Someone 1", "junglebook.jpg"),
+                new Movie(6, "Gladiator", 99.99m, "Someone 2", "gladiator.jpg"),
+                new Movie(7, "Forrest Gump", 129.99m, "Someone 3", "forrest-gump.jpg"),
+                new Movie(8, "Nocturne",190.56m,"Zu Quirke","nocturne.jpg"),
+                new Movie(9, "All my friends are dead",180.45m,"Jan Belcl","deadfriends.jpg")
             };
 
             foreach (Movie movie in movies)

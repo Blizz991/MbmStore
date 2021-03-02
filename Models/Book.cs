@@ -24,7 +24,7 @@ namespace MbmStore.Models
             ISBN = isbn;
         }
 
-        public Book(string author, string title, decimal price, string publisher, string imageFileName, string isbn)
+        public Book( int productId, string author, string title, decimal price, string publisher, string imageFileName, string isbn)
         {
             Author = author;
             Title = title;
@@ -32,6 +32,7 @@ namespace MbmStore.Models
             Publisher = publisher;
             ImageFileName = imageFileName;
             ISBN = isbn;
+            ProductId = productId;
         }
     }
 }

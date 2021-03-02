@@ -33,5 +33,14 @@ namespace MbmStore.Models
             Director = director;
             ImageFileName = imageFileName;
         }
+
+        public Movie(int productId, string title, decimal price, string director, string imageFileName)
+        {
+            Title = title;
+            Price = price;
+            Director = director;
+            ImageFileName = imageFileName;
+            ProductId = productId;
+        }
     }
 }
