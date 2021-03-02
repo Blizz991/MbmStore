@@ -1,0 +1,41 @@
+﻿@using MbmStore.Models
+<h1>Invoices</h1>
+
+<section>
+    @foreach (Invoice invoice in ViewBag.Invoices)
+    {
+        <article>
+            <article><b>Customer:</b> @invoice.Customer.FirstName @invoice.Customer.LastName</article>
+            <article>
+                <table>
+                    <tr>
+                        <th>Title</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+
+                    @{decimal totalCost = 0M;}
+
+                    @foreach (OrderItem orderItem in invoice.OrderItems)
+                    {
+                        <tr>
+                            <td>@orderItem.Product.Title (@orderItem.Product.ToString().Substring(16))</td>
+                            <td>@orderItem.Product.Price kr.</td>
+                            <td>@orderItem.Quantity</td>
+                            <td>@orderItem.TotalPrice kr.</td>
+                        </tr>
+
+                        totalCost = totalCost + orderItem.TotalPrice;
+                    }
+                    <tr>
+                        <td colspan="3"><b>Total:</b></td>
+                        <td><b>@totalCost kr.</b></td>
+                    </tr>
+                    @*</tr>*@
+                </table>
+            </article>
+            <hr />
+        </article>
+    }
+</section>

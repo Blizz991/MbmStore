@@ -1,4 +1,5 @@
 ﻿<!DOCTYPE html>
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
 
 <html>
 <head>
@@ -6,6 +7,22 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <nav>
+        <ul>
+            <li>
+                <a asp-controller="Movie" asp-action="Index">Movies</a>
+            </li>
+            <li>
+                <a asp-controller="Customer" asp-action="Index">Customers</a>
+            </li>
+            <li>
+                <a asp-controller="Catalogue" asp-action="Index">Catalogue</a>
+            </li>
+            <li>
+                <a asp-controller="Invoice" asp-action="Index">Invoices</a>
+            </li>
+        </ul>
+    </nav>
     <main>
         @RenderBody()
     </main>
