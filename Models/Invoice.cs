@@ -17,7 +17,9 @@ namespace MbmStore.Models
 
         public Invoice(int invoiceId, DateTime orderDate, Customer customer)
         {
-
+            InvoiceId = invoiceId;
+            OrderDate = orderDate;
+            Customer = customer;
         }
 
         public void AddOrderItem(OrderItem orderItem)
