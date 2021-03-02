@@ -1,0 +1,146 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        .container > section {
+            padding: 15px;
+            width: 100%;
+        }
+
+    .books {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .book {
+        width: 45%;
+    }
+
+    .album {
+        display: flex;
+        width: 100%;
+    }
+
+        .album section {
+            width: 50%;
+        }
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 0;
+    }
+
+    .album-tracks {
+        flex-direction: column;
+    }
+
+    .movies {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+    }
+
+        .movies > article {
+            display: flex;
+            flex-direction: column;
+            width: 33%;
+        }
+
+    h2 {
+        width: 100%;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        align-self: flex-start;
+    }
+</style>
+<h1>Catalogue Index</h1>
+
+<section class="container">
+    <section class="books">
+        <h2>Books</h2>
+        @foreach (var book in ViewBag.Books)
+        {
+            <article class="book">
+                <ul>
+                    <li>
+                        <b>Author:</b> @book.Author
+                    </li>
+                    <li>
+                        <b>Title:</b> @book.Title
+                    </li>
+                    <li>
+                        <b>Price:</b> @book.Price
+                    </li>
+                    <li>
+                        <b>Publisher:</b> @book.Publisher
+                    </li>
+                    <li>
+                        <b>ISBN:</b> @book.ISBN
+                    </li>
+                </ul>
+                <img src="~/Images/@book.ImageFileName" />
+            </article>
+        }
+    </section>
+    <section>
+        <h2>Music CD's</h2>
+        @foreach (var musicCD in ViewBag.MusicCDs)
+        {
+            <article class="album">
+                <section class="album-info">
+                    <ul>
+                        <li><b>Album:</b> @musicCD.Title</li>
+                        <li><b>Artist:</b> @musicCD.Artist</li>
+                        <li><b>Price:</b> @musicCD.Price</li>
+                        <li><b>Publisher:</b> @musicCD.Publisher</li>
+                    </ul>
+                    <img src="~/Images/@musicCD.ImageFileName" />
+                </section>
+                <section class="album-tracks">
+                    <b>Tracks:</b>
+                    <ol>
+                        @foreach (var track in musicCD.Tracks)
+                        {
+                            <li>@track.Title - <i>@track.Composer</i> (@String.Format("{0:00}:{1:00}", @track.Length.Minutes, @track.Length.Seconds))</li>
+                        }
+                    </ol>
+                    @* Why dafuq doesn't it default to leading zeros for seconds??? *@
+                    <b>Total playing time: @musicCD.TotalTime</b>
+                </section>
+            </article>
+            <hr />
+        }
+    </section>
+    <section class="movies">
+        <h2>Movies</h2>
+        @foreach (var movie in ViewBag.Movies)
+        {
+            <article>
+                <ul>
+                    <li><b>Title: </b> @movie.Title</li>
+                    <li><b>Director: </b> <i>@movie.Director</i></li>
+                    <li><b>Price: </b> @movie.Price</li>
+                </ul>
+                <img src="~/Images/@movie.ImageFileName" />
+            </article>
+        }
+    </section>
+</section>
