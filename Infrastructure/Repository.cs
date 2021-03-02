@@ -14,9 +14,7 @@ namespace MbmStore.Infrastructure
 
         static Repository()
         {
-            // List<OrderItem> orderItem = new List<OrderItem>{
-            //     new OrderItem(1,200,,1,500)
-            // }
+            #region books
             List<Book> books = new List<Book> {
             new Book(
                 1,
@@ -44,6 +42,9 @@ namespace MbmStore.Infrastructure
                 Products.Add(book);
             }
 
+            #endregion
+
+            #region musicCD's
             List<MusicCD> musicCDs = new List<MusicCD>
             {
                 new MusicCD(
@@ -101,7 +102,9 @@ namespace MbmStore.Infrastructure
             {
                 Products.Add(musicCD);
             }
+            #endregion
 
+            #region movies
             List<Movie> movies = new List<Movie>
             {
                 new Movie(5, "Jungle Book", 160.50m, "Someone 1", "junglebook.jpg"),
@@ -115,7 +118,9 @@ namespace MbmStore.Infrastructure
             {
                 Products.Add(movie);
             }
+            #endregion movies
 
+            #region customers
             List<Customer> customers = new List<Customer>
             {
                 new Customer("Lasse", "Olsen", new DateTime(1991,02,09), "Naturvej 21", 8361, "Hasselager", new int[] {12345678, 23456789 }),
@@ -132,7 +137,9 @@ namespace MbmStore.Infrastructure
             {
                 Customers.Add(customer);
             }
+            #endregion customers
 
+            #region invoices
             Invoices.Add(
                 new Invoice(1, new DateTime(2021, 02, 01), customers[2])
             );
@@ -157,6 +164,7 @@ namespace MbmStore.Infrastructure
             Invoices[2].AddOrderItem(new OrderItem(Products[8], 2));
             Invoices[2].AddOrderItem(new OrderItem(Products[2], 3));
             Invoices[2].AddOrderItem(new OrderItem(Products[3], 28));
+            #endregion invoices
         }
     }
 }
