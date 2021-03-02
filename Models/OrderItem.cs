@@ -13,13 +13,29 @@ namespace MbmStore.Models
         public int Quantity { get; set; }
         public decimal TotalPrice { get; }
 
-
         public OrderItem() { }
 
         public OrderItem(Product product, int quantity)
         {
             Product = product;
             Quantity = quantity;
+
+            TotalPrice = CalculateTotalPrice(product, quantity);
+        }
+
+        public static decimal CalculateTotalPrice(Product product, int quantity)
+        {
+            decimal totalPrice;
+
+            if (product != null)
+            {
+                totalPrice = product.Price * quantity;
+            }else
+            {
+                totalPrice = 0;
+            }
+
+            return totalPrice;
         }
     }
 }
