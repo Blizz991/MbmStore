@@ -8,7 +8,7 @@ namespace MbmStore.Models
     public class Product
     {
         private decimal price;
-
+        public int ProductId {get; set;}
         public string Title { get; set; }
         public decimal Price
         {
@@ -40,6 +40,14 @@ namespace MbmStore.Models
             Title = title;
             this.price = price;
             ImageFileName = imageFileName;
+        }
+        public Product(int productId ,string title, decimal price, string imageFileName)
+        {
+            ProductId = productId;
+            Title = title;
+            this.price = price;
+            ImageFileName = imageFileName;
+
         }
     }
 }
