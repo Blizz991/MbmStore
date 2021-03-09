@@ -8,6 +8,7 @@ namespace MbmStore.Models
     public class Customer
     {
         // properties
+        public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         private DateTime _birthDate;
@@ -38,8 +39,9 @@ namespace MbmStore.Models
         public Customer() { }
 
         //public Customer(string firstName, string lastName, string address, int zipCode, string city, int phoneNumber)
-        public Customer(string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city)
+        public Customer(int id, string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city)
         {
+            CustomerId = id;
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
@@ -50,8 +52,9 @@ namespace MbmStore.Models
             //PhoneNumber = phoneNumber;
         }
 
-        public Customer(string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city, int[] phoneNumbers)
+        public Customer(int id, string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city, int[] phoneNumbers)
         {
+            CustomerId = id;
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;

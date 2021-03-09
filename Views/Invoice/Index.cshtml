@@ -1,7 +1,13 @@
 ﻿@using MbmStore.Models
+@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
 <h1>Invoices</h1>
 
 <section>
+    <form asp-action="index" asp-controller="Invoice" method="post">
+        <select id="customer" name="customer" asp-items="@ViewBag.Customers as List<SelectListItem>">
+        </select>
+        <button type="submit">Show invoices</button>
+    </form>
     @foreach (Invoice invoice in ViewBag.Invoices)
     {
         <article>
