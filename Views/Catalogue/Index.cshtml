@@ -1,4 +1,8 @@
 ﻿@using MbmStore.Models
+@model IEnumerable<Product>
+@{ 
+    ViewData["Title"] = "Products";
+}
 
 <style>
     * {
@@ -69,38 +73,9 @@
 <h1>Catalogue Index</h1>
 
 <section class="container">
-    @*
-        @foreach (Product product in ViewBag.Products)
-    {
-        if (product is Book)
-        {
-            Book book = (Book)product;
-
-            <article class="book">
-                <ul>
-                    <li>
-                        <b>Author:</b> @book.Author
-                    </li>
-                    <li>
-                        <b>Title:</b> @book.Title
-                    </li>
-                    <li>
-                        <b>Price:</b> @book.Price
-                    </li>
-                    <li>
-                        <b>Publisher:</b> @book.Publisher
-                    </li>
-                    <li>
-                        <b>ISBN:</b> @book.ISBN
-                    </li>
-                </ul>
-                <img src="~/Images/@book.ImageFileName" />
-            </article>
-        }
-    }*@
     <section class="books">
         <h2>Books</h2>
-        @foreach (var book in ViewBag.Books)
+        @foreach (Book book in Model.OfType<Book>())
         {
             <article class="book">
                 <ul>
@@ -126,7 +101,7 @@
     </section>
     <section>
         <h2>Music CD's</h2>
-        @foreach (var musicCD in ViewBag.MusicCDs)
+        @foreach (MusicCD musicCD in Model.OfType<MusicCD>())
         {
             <article class="album">
                 <section class="album-info">
@@ -155,7 +130,7 @@
     </section>
     <section class="movies">
         <h2>Movies</h2>
-        @foreach (var movie in ViewBag.Movies)
+        @foreach (Movie movie in Model.OfType<Movie>())
         {
             <article>
                 <ul>

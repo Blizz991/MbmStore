@@ -15,11 +15,11 @@ namespace MbmStore.Controllers
             //ViewBag.Products = Repository.Products;
 
             // Not the smartest way of doing this, but sticking to the previous code we made in the previous assignments...
-            ViewBag.Books = Repository.Products.OfType<Book>().ToList();
-            ViewBag.MusicCDs = Repository.Products.OfType<MusicCD>().ToList();
-            ViewBag.Movies = Repository.Products.OfType<Movie>().ToList();
+            //ViewBag.Books = Repository.Products.OfType<Book>().ToList();
+            //ViewBag.MusicCDs = Repository.Products.OfType<MusicCD>().ToList();
+            //ViewBag.Movies = Repository.Products.OfType<Movie>().ToList();
 
-            return View();
+            return View(Repository.Products);
         }
     }
 }
