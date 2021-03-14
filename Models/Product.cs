@@ -8,7 +8,7 @@ namespace MbmStore.Models
     public class Product
     {
         private decimal price;
-        public int ProductId {get; set;}
+        public int ProductId { get; set; }
         public string Title { get; set; }
         public decimal Price
         {
