@@ -4,8 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace MbmStore.Models.ViewModels
 {
@@ -14,7 +14,7 @@ namespace MbmStore.Models.ViewModels
         public static Cart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            SessionCart cart = session?.GetJson<SessionCart>("Cart")?? new SessionCart();
+            SessionCart cart = session?.GetJson<SessionCart>("Cart") ?? new SessionCart();
 
             cart.Session = session;
 
