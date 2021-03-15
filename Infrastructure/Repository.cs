@@ -36,7 +36,9 @@ namespace MbmStore.Infrastructure
                 )
             };
 
+
             // Doesn't really make sense, but sticking to the previous code.
+            // Products.AddRange(books); Cleaner way of doing what's below
             foreach (Book book in books)
             {
                 Products.Add(book);
