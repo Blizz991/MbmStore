@@ -24,10 +24,11 @@ namespace MbmStore.Models
                     Product = product,
                     Quantity = quantity
                 });
+                
             }
             else
             {
-                item.Quantity += quantity;
+                item.Quantity = quantity;
             }
         }
 

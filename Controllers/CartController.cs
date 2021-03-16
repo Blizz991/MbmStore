@@ -24,13 +24,13 @@ namespace MbmStore.Controllers
             return Repository.Products.FirstOrDefault(p => p.ProductId == productId);
         }
 
-        public RedirectToActionResult AddToCart(int productId, string returnUrl)
+        public RedirectToActionResult AddToCart(int productId, int quantity, string returnUrl)
         {
             Product product = GetProduct(productId);
 
             if (product != null)
             {
-                cart.AddItem(product, 1);
+                cart.AddItem(product, quantity);
             }
 
             return RedirectToAction("Index", new { returnUrl });
@@ -47,6 +47,20 @@ namespace MbmStore.Controllers
 
             return RedirectToAction("Index", new { returnUrl });
         }
+
+        public RedirectToActionResult AdjustQuantityOfProductInCart(int productId, string returnUrl)
+        {
+            Product product = GetProduct(productId);
+
+            if (product != null)
+            {
+                cart.RemoveLine(product);
+            }
+
+            return RedirectToAction("Index", new { returnUrl });
+        }
+
+        
 
         public ViewResult Index(string returnUrl)
         {
