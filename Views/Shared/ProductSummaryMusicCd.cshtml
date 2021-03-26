@@ -10,7 +10,7 @@
             <li><b>Publisher:</b> @Model.Publisher</li>
         </ul>
         <img src="~/Images/@Model.ImageFileName" />
-        @await Html.PartialAsync("AddToCartButton"), (Product) Model)
+        @await Html.PartialAsync("AddToCartButton", (Product) Model)
     </section>
     <section class="album-tracks">
         <b>Tracks:</b>

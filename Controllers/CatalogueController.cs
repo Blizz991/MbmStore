@@ -5,12 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MbmStore.Models.ViewModels;
 
 namespace MbmStore.Controllers
 {
     public class CatalogueController : Controller
     {
-        public IActionResult Index()
+        public int PageSize = 4;
+
+        public IActionResult Index(int page = 1)
         {
             //ViewBag.Products = Repository.Products;
 
@@ -19,7 +22,22 @@ namespace MbmStore.Controllers
             //ViewBag.MusicCDs = Repository.Products.OfType<MusicCD>().ToList();
             //ViewBag.Movies = Repository.Products.OfType<Movie>().ToList();
 
-            return View(Repository.Products);
+            ProductsListViewModel model = new ProductsListViewModel();
+            model = new ProductsListViewModel
+            {
+                Products = Repository.Products
+                .OrderBy(p => p.ProductId)
+                .Skip((page - 1) * PageSize)
+                .Take(PageSize),
+                PagingInfo = new PagingInfo
+                {
+                    CurrentPage = page,
+                    ItemsPerPage = PageSize,
+                    TotalItems = Repository.Products.Count
+                }
+            };
+
+            return View(model);
         }
     }
 }

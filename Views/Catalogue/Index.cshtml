@@ -1,7 +1,5 @@
-﻿@addTagHelper "*, Microsoft.AspNetCore.Mvc.TagHelpers"
-@using MbmStore.Models
-@using MbmStore.Infrastructure
-@model IEnumerable<Product>
+﻿@addTagHelper "MbmStore.Infrastructure.*, MbmStore"
+@model ProductsListViewModel
 @{
     ViewData["Title"] = "Products";
 }
@@ -9,25 +7,35 @@
 <h1>Catalogue Index</h1>
 
 <section class="container">
-    <section class="books">
-        <h2>Books</h2>
-        @foreach (Book book in Model.OfType<Book>())
-        {
-            @await Html.PartialAsync("ProductSummaryBook", book)
-        }
-    </section>
-    <section>
-        <h2>Music CD's</h2>
-        @foreach (MusicCD musicCD in Model.OfType<MusicCD>())
-        {
-            @await Html.PartialAsync("ProductSummaryMusicCd", musicCD)
-        }
-    </section>
-    <section class="movies">
-        <h2>Movies</h2>
-        @foreach (Movie movie in Model.OfType<Movie>())
-        {
-            @await Html.PartialAsync("ProductSummaryMovie", movie)
-        }
-    </section>
+    @if (Model.Products.OfType<Book>().ToList().Count > 0)
+    {
+        <section class="books">
+            <h2>Books</h2>
+            @foreach (Book book in Model.Products.OfType<Book>())
+            {
+                @await Html.PartialAsync("ProductSummaryBook", book)
+            }
+        </section>
+    }
+    @if (Model.Products.OfType<MusicCD>().ToList().Count > 0)
+    {
+        <section>
+            <h2>Music CD's</h2>
+            @foreach (MusicCD musicCD in Model.Products.OfType<MusicCD>())
+            {
+                @await Html.PartialAsync("ProductSummaryMusicCd", musicCD)
+            }
+        </section>
+    }
+    @if (Model.Products.OfType<Movie>().ToList().Count > 0)
+    {
+        <section class="movies">
+            <h2>Movies</h2>
+            @foreach (Movie movie in Model.Products.OfType<Movie>())
+            {
+                @await Html.PartialAsync("ProductSummaryMovie", movie)
+            }
+        </section>
+    }
+    <div page-model="@Model.PagingInfo" page-action="Index"></div>
 </section>
