@@ -34,5 +34,17 @@ namespace MbmStore.Models
             ISBN = isbn;
             ProductId = productId;
         }
+
+        public Book(int productId, string author, string title, decimal price, string publisher, string imageFileName, string isbn, string category)
+        {
+            Author = author;
+            Title = title;
+            Price = price;
+            Publisher = publisher;
+            ImageFileName = imageFileName;
+            ISBN = isbn;
+            ProductId = productId;
+            Category = category;
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace MbmStore.Controllers
     {
         public int PageSize = 4;
 
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
             //ViewBag.Products = Repository.Products;
 
@@ -26,6 +26,7 @@ namespace MbmStore.Controllers
             model = new ProductsListViewModel
             {
                 Products = Repository.Products
+                .Where(p => category == null || p.Category == category)
                 .OrderBy(p => p.ProductId)
                 .Skip((page - 1) * PageSize)
                 .Take(PageSize),
@@ -34,7 +35,8 @@ namespace MbmStore.Controllers
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
                     TotalItems = Repository.Products.Count
-                }
+                },
+                CurrentCategory = category
             };
 
             return View(model);

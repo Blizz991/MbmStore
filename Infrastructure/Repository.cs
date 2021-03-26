@@ -36,11 +36,11 @@ namespace MbmStore.Infrastructure
                 )
             };
 
-
             // Doesn't really make sense, but sticking to the previous code.
             // Products.AddRange(books); Cleaner way of doing what's below
             foreach (Book book in books)
             {
+                book.Category = "Book";
                 Products.Add(book);
             }
 
@@ -102,6 +102,7 @@ namespace MbmStore.Infrastructure
 
             foreach (MusicCD musicCD in musicCDs)
             {
+                musicCD.Category = "Music CD";
                 Products.Add(musicCD);
             }
             #endregion
@@ -118,6 +119,7 @@ namespace MbmStore.Infrastructure
 
             foreach (Movie movie in movies)
             {
+                movie.Category = "Movie";
                 Products.Add(movie);
             }
             #endregion movies

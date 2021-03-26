@@ -42,5 +42,15 @@ namespace MbmStore.Models
             ImageFileName = imageFileName;
             ProductId = productId;
         }
+
+        public Movie(int productId, string title, decimal price, string director, string imageFileName, string category)
+        {
+            Title = title;
+            Price = price;
+            Director = director;
+            ImageFileName = imageFileName;
+            ProductId = productId;
+            Category = category;
+        }
     }
 }

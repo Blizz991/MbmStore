@@ -59,6 +59,27 @@ namespace MbmStore.Models
             }
         }
 
+        public MusicCD(int productId, string artist, string title, decimal price, string publisher, string imageFileName, Track[] tracks, string category)
+        {
+            Artist = artist;
+            Title = title;
+            Price = price;
+            Publisher = publisher;
+            ImageFileName = imageFileName;
+            ProductId = productId;
+            Category = category;
+
+            if (tracks != null)
+            {
+                foreach (Track track in tracks)
+                {
+                    AddTrack(track);
+                }
+
+                TotalTime = GetTotalTime();
+            }
+        }
+
         public void AddTrack(Track track)
         {
             Tracks.Add(track);

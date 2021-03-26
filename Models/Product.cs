@@ -26,6 +26,7 @@ namespace MbmStore.Models
             get { return price; }
         }
         public string ImageFileName { get; set; }
+        public string Category { get; set; }
 
         public Product() { }
 
@@ -41,13 +42,22 @@ namespace MbmStore.Models
             this.price = price;
             ImageFileName = imageFileName;
         }
+
         public Product(int productId ,string title, decimal price, string imageFileName)
         {
             ProductId = productId;
             Title = title;
             this.price = price;
             ImageFileName = imageFileName;
+        }
 
+        public Product(int productId, string title, decimal price, string imageFileName, string category)
+        {
+            ProductId = productId;
+            Title = title;
+            this.price = price;
+            ImageFileName = imageFileName;
+            Category = category;
         }
     }
 }
