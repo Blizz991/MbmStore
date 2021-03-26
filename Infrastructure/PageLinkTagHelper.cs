@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace MbmStore.Infrastructure
 {
+    [HtmlTargetElement("nav", Attributes = "page-model")]
     public class PageLinkTagHelper : TagHelper
     {
         private IUrlHelperFactory urlHelperFactory;
@@ -30,16 +31,21 @@ namespace MbmStore.Infrastructure
             if (output != null)
             {
                 IUrlHelper urlHelper = urlHelperFactory.GetUrlHelper(ViewContext);
-                TagBuilder result = new TagBuilder("div");
-                for (int i = 1; i < PageModel.TotalPages; i++)
+                TagBuilder pagination = new TagBuilder("ul");
+                pagination.AddCssClass("pagination");
+                for (int i = 1; i <= PageModel.TotalPages; i++)
                 {
-                    TagBuilder tag = new TagBuilder("a");
-                    tag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
-                    tag.InnerHtml.Append(i.ToString());
-                    result.InnerHtml.AppendHtml(tag);
+                    TagBuilder listItemTag = new TagBuilder("li");
+                    listItemTag.AddCssClass("page-item");
+                    TagBuilder linkTag = new TagBuilder("a");
+                    linkTag.AddCssClass("page-link");
+                    linkTag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+                    linkTag.InnerHtml.Append(i.ToString());
+                    listItemTag.InnerHtml.AppendHtml(linkTag);
+                    pagination.InnerHtml.AppendHtml(listItemTag);
                 }
 
-                output.Content.AppendHtml(result.InnerHtml);
+                output.Content.AppendHtml(pagination);
             }
             else
             {
