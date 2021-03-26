@@ -26,6 +26,13 @@ namespace MbmStore.Infrastructure
         public PagingInfo PageModel { get; set; }
         public string PageAction { get; set; }
 
+        [HtmlAttributeName(DictionaryAttributePrefix = "page-url-")]
+        public Dictionary<string, object> PageUrlValues { get; set; } = new Dictionary<string, object>();
+
+        public bool PageClassesEnabled { get; set; } = false;
+        public string PageClass { get; set; }
+        public string PageClassSelected { get; set; }
+
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             if (output != null)
@@ -35,11 +42,21 @@ namespace MbmStore.Infrastructure
                 pagination.AddCssClass("pagination");
                 for (int i = 1; i <= PageModel.TotalPages; i++)
                 {
+                    PageUrlValues["page"] = i;
+
                     TagBuilder listItemTag = new TagBuilder("li");
-                    listItemTag.AddCssClass("page-item");
                     TagBuilder linkTag = new TagBuilder("a");
                     linkTag.AddCssClass("page-link");
-                    linkTag.Attributes["href"] = urlHelper.Action(PageAction, new { page = i });
+                    linkTag.Attributes["href"] = urlHelper.Action(PageAction, PageUrlValues);
+                    if (PageClassesEnabled)
+                    {
+                        listItemTag.AddCssClass(PageClass);
+                        //listItemTag.AddCssClass(i == PageModel.CurrentPage ? PageClassSelected : PageClassNormal);
+                        if (i == PageModel.CurrentPage)
+                        {
+                            listItemTag.AddCssClass(PageClassSelected);
+                        }
+                    }
                     linkTag.InnerHtml.Append(i.ToString());
                     listItemTag.InnerHtml.AppendHtml(linkTag);
                     pagination.InnerHtml.AppendHtml(listItemTag);

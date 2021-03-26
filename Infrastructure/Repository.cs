@@ -102,7 +102,7 @@ namespace MbmStore.Infrastructure
 
             foreach (MusicCD musicCD in musicCDs)
             {
-                musicCD.Category = "Music CD";
+                musicCD.Category = "MusicCD";
                 Products.Add(musicCD);
             }
             #endregion

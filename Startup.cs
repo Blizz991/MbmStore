@@ -47,14 +47,49 @@ namespace Lesson01
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "Page/{page:int}",
+                    defaults: new
+                    {
+                        Controller = "Catalogue",
+                        action = "Index"
+                    }
+                );
+
+                endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "Catalogue/{category}",
+                    defaults: new
+                    {
+                        Controller = "Catalogue",
+                        action = "Index",
+                        productPage = 1
+                    }
+                );
+
+                endpoints.MapControllerRoute(
+                    name: null,
+                    pattern: "",
+                    defaults: new
+                    {
+                        Controller = "Catalogue",
+                        action = "Index"
+                    }
+                );
+
+                endpoints.MapControllerRoute(
                     name : "pagination",
                     pattern: "Catalogue/Page/{page}",
-                    defaults: new { Controller = "Catalogue", action = "Index"}
+                    defaults: new {
+                        Controller = "Catalogue",
+                        action = "Index"
+                    }
                 );
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                );
             });
         }
     }
