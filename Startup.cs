@@ -48,7 +48,7 @@ namespace Lesson01
             {
                 endpoints.MapControllerRoute(
                     name: null,
-                    pattern: "Page/{page:int}",
+                    pattern: "Catalogue/Page/{page:int}",
                     defaults: new
                     {
                         Controller = "Catalogue",
@@ -79,7 +79,7 @@ namespace Lesson01
 
                 endpoints.MapControllerRoute(
                     name : "pagination",
-                    pattern: "Catalogue/Page/{page}",
+                    pattern: "Catalogue/{category}/Page/{page}",
                     defaults: new {
                         Controller = "Catalogue",
                         action = "Index"
