@@ -7,33 +7,34 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Quantity</th>
             <th>Item</th>
             <th class="text-right">Price</th>
             <th class="text-right">Subtotal</th>
+            <th>Quantity</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var line in Model.Cart.Lines)
         {
             <tr>
-                <td class="text-center">@line.Quantity</td>
                 <td class="text-left">@line.Product.Title</td>
                 <td class="text-right">@line.Product.Price.ToString("c")</td>
                 <td class="text-right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
-                <td>
+                <td class="d-flex">
+                    <form class="mr-2" asp-action="AddToCart" method="post">
+                        <input type="hidden" name="ProductID" value="@line.Product.ProductId" />
+                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                        <div class="input-group" style="max-width: 100px;">
+                            <input class="form-control form-control-sm" type="number" value="@line.Quantity" name="quantity" />
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-sm btn-warning"><i class="far fa-edit"></i></button>
+                            </div>
+                        </div>
+                    </form>
                     <form asp-action="RemoveFromCart" method="post">
                         <input type="hidden" name="ProductID" value="@line.Product.ProductId" />
                         <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
-                        <button type="submit" class="btn btn-sm btn-danger">Remove</button>
-                    </form>
-                </td>
-                <td>
-                    <form asp-action="AddToCart" method="post">
-                        <input type="hidden" name="ProductID" value="@line.Product.ProductId" />
-                        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
-                        <input style="width:50px;" type="number" value="@line.Quantity" name="quantity" />
-                        <button type="submit" class="btn btn-sm btn-danger">Update Quantity</button>
+                        <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
                     </form>
                 </td>
             </tr>
@@ -42,7 +43,7 @@
     <tfoot>
         <tr>
             <td colspan="3" class="text-right">Total:</td>
-            <td class="text-right">@Model.Cart.ComputeTotalValue().ToString("c")</td>
+            <td class="text-right"><b>@Model.Cart.ComputeTotalValue().ToString("c")</b></td>
         </tr>
     </tfoot>
 </table>

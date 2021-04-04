@@ -1,27 +1,29 @@
 ﻿@model MbmStore.Models.MusicCD
 @using MbmStore.Infrastructure
 
-<article class="album">
-    <section class="album-info">
-        <ul>
-            <li><b>Album:</b> @Model.Title</li>
-            <li><b>Artist:</b> @Model.Artist</li>
-            <li><b>Price:</b> @Model.Price.ToString("c")</li>
-            <li><b>Publisher:</b> @Model.Publisher</li>
+<article class="card d-block d-lg-flex">
+    <section class="album-info p-2 d-flex flex-column">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Album:</b> @Model.Title</li>
+            <li class="list-group-item"><b>Artist:</b> @Model.Artist</li>
+            <li class="list-group-item"><b>Price:</b> @Model.Price.ToString("c")</li>
+            <li class="list-group-item"><b>Publisher:</b> @Model.Publisher</li>
         </ul>
-        <img src="~/Images/@Model.ImageFileName" />
-        @await Html.PartialAsync("AddToCartButton", (Product) Model)
+        <img class="img-fluid mx-auto mb-2" src="~/Images/@Model.ImageFileName" />
+        @await Html.PartialAsync("AddToCartButton", (Product)Model)
     </section>
-    <section class="album-tracks">
+    <section class="album-tracks p-2">
         <b>Tracks:</b>
-        <ol>
-            @foreach (var track in Model.Tracks)
-            {
-                <li>@track.Title - <i>@track.Composer</i> (@String.Format("{0:00}:{1:00}", @track.Length.Minutes, @track.Length.Seconds))</li>
+        <ul class="list-group list-group-flush">
+            @{int trackCount = 1;
+                foreach (var track in Model.Tracks)
+                {
+                    <li class="list-group-item"><b>@trackCount.</b> @track.Title - <i>@track.Composer</i> (@String.Format("{0:00}:{1:00}", @track.Length.Minutes, @track.Length.Seconds))</li>
+                    trackCount++;
+                }
             }
-        </ol>
+            <li class="list-group-item"><b>Total playing time: @Model.TotalTime</b></li>
+        </ul>
         @* Why dafuq doesn't it default to leading zeros for seconds??? *@
-        <b>Total playing time: @Model.TotalTime</b>
     </section>
 </article>
-<hr />

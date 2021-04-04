@@ -9,8 +9,8 @@
 <section class="container">
     @if (Model.Products.OfType<Book>().ToList().Count > 0)
     {
-        <section class="books">
-            <h2>Books</h2>
+        <section class="books card-deck mb-4">
+            <h2 class="w-100">Books</h2>
             @foreach (Book book in Model.Products.OfType<Book>())
             {
                 @await Html.PartialAsync("ProductSummaryBook", book)
@@ -19,8 +19,8 @@
     }
     @if (Model.Products.OfType<MusicCD>().ToList().Count > 0)
     {
-        <section>
-            <h2>Music CD's</h2>
+        <section class="card-deck mb-4">
+            <h2 class="w-100">Music CD's</h2>
             @foreach (MusicCD musicCD in Model.Products.OfType<MusicCD>())
             {
                 @await Html.PartialAsync("ProductSummaryMusicCd", musicCD)
@@ -29,8 +29,8 @@
     }
     @if (Model.Products.OfType<Movie>().ToList().Count > 0)
     {
-        <section class="movies">
-            <h2>Movies</h2>
+        <section class="movies card-deck mb-4">
+            <h2 class="w-100">Movies</h2>
             @foreach (Movie movie in Model.Products.OfType<Movie>())
             {
                 @await Html.PartialAsync("ProductSummaryMovie", movie)

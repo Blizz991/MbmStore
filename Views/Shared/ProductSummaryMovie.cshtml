@@ -1,12 +1,22 @@
 ﻿@model MbmStore.Models.Movie
 @using MbmStore.Infrastructure
 
-<article>
-    <ul>
-        <li><b>Title: </b> @Model.Title</li>
-        <li><b>Director: </b> <i>@Model.Director</i></li>
-        <li><b>Price: </b> @Model.Price.ToString("c")</li>
-    </ul>
-    <img src="~/Images/@Model.ImageFileName" />
-    @await Html.PartialAsync("AddToCartButton", (Product) Model)
+@*<article>
+        <ul>
+            <li><b>Title: </b> @Model.Title</li>
+            <li><b>Director: </b> <i>@Model.Director</i></li>
+            <li><b>Price: </b> @Model.Price.ToString("c")</li>
+        </ul>
+        <img src="~/Images/@Model.ImageFileName" />
+        @await Html.PartialAsync("AddToCartButton", (Product) Model)
+    </article>*@
+
+<article class="card min-w-50">
+    <section class="card-body d-flex flex-column">
+        <img src="~/Images/@Model.ImageFileName" class="img-fluid mx-auto mb-2" />
+        <h5>@Model.Title</h5>
+        <p><b> Director:</b> @Model.Director</p>
+        <p><b> Price:</b> @Model.Price</p>
+        @await Html.PartialAsync("AddToCartButton", (Product)Model)
+    </section>
 </article>
