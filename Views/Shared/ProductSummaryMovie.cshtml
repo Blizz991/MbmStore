@@ -5,7 +5,7 @@
     <ul>
         <li><b>Title: </b> @Model.Title</li>
         <li><b>Director: </b> <i>@Model.Director</i></li>
-        <li><b>Price: </b> @Model.Price</li>
+        <li><b>Price: </b> @Model.Price.ToString("c")</li>
     </ul>
     <img src="~/Images/@Model.ImageFileName" />
     @await Html.PartialAsync("AddToCartButton", (Product) Model)
