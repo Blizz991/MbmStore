@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Globalization;
 
 namespace Lesson01
 {
@@ -25,6 +26,10 @@ namespace Lesson01
             services.AddControllersWithViews();
             services.AddMemoryCache();
             services.AddSession();
+
+            CultureInfo cultureInfo = CultureInfo.GetCultureInfo("da-DK");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
