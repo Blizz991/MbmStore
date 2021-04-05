@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using MbmStore.Models.ViewModels;
+using System.Web.Http;
 
 namespace MbmStore.Controllers
 {
@@ -13,7 +14,7 @@ namespace MbmStore.Controllers
     {
         public int PageSize = 4;
 
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, [FromUri]int page = 1)
         {
             //ViewBag.Products = Repository.Products;
 

@@ -12,6 +12,7 @@
     <a class="btn btn-block @(category == ViewBag.CurrentCategory ? "btn-primary" : "btn-secondary")"
        asp-action="Index"
        asp-controller="Catalogue"
+       asp-route-page="1"
        asp-route-category="@category">
         @category
     </a>

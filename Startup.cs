@@ -47,40 +47,10 @@ namespace Lesson01
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
-                    name: null,
-                    pattern: "Catalogue/Page/{page:int}",
-                    defaults: new
-                    {
-                        Controller = "Catalogue",
-                        action = "Index"
-                    }
-                );
-
-                endpoints.MapControllerRoute(
-                    name: null,
-                    pattern: "Catalogue/{category}",
-                    defaults: new
-                    {
-                        Controller = "Catalogue",
-                        action = "Index",
-                        productPage = 1
-                    }
-                );
-
-                endpoints.MapControllerRoute(
-                    name: null,
-                    pattern: "",
-                    defaults: new
-                    {
-                        Controller = "Catalogue",
-                        action = "Index"
-                    }
-                );
-
-                endpoints.MapControllerRoute(
-                    name : "pagination",
+                    name: "pagination",
                     pattern: "Catalogue/{category}/Page/{page}",
-                    defaults: new {
+                    defaults: new
+                    {
                         Controller = "Catalogue",
                         action = "Index"
                     }
@@ -88,7 +58,7 @@ namespace Lesson01
 
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}"
+                    pattern: "{controller=Catalogue}/{action=Index}/{id?}"
                 );
             });
         }
