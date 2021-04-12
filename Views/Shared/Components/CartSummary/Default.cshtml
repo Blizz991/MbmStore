@@ -2,7 +2,7 @@
 @using MbmStore.Infrastructure
 
 <article class="ml-auto mr-2 order-md-2">
-    <a class="nav-link text-white d-flex align-items-center" asp-action="Index" asp-controller="Cart">
+    <a class="nav-link text-white d-flex align-items-center" asp-action="Index" asp-controller="Cart" asp-route-returnUrl="@ViewContext.HttpContext.Request.PathAndQuery()">
         @if (Model.Lines.Count > 0)
         {
             @*<b class="mr-1 d-none d-md-block">Your cart: </b> @Model.Lines.Count @:x <span class="d-none d-md-block mx-1">@(Model.Lines.Count == 1 ? "item " : " items ")</span> @Model.ComputeTotalValue().ToString("c")*@

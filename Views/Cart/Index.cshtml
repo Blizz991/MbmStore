@@ -48,5 +48,5 @@
     </tfoot>
 </table>
 <section class="text-center">
-    <a class="btn btn-primary" href="@Model.ReturnUrl">Continue shopping</a>
+    <a class="btn btn-primary" href="@(String.IsNullOrEmpty(Model.ReturnUrl) ? Url.ActionLink("Index", "Catalogue") : Model.ReturnUrl)">Continue shopping</a>
 </section>
