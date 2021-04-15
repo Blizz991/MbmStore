@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -32,11 +33,13 @@ namespace MbmStore.Models
         public string Address { get; set; }
         public int ZipCode { get; set; }
         public string City { get; set; }
-        public List<int> PhoneNumbers { get; } = new List<int>();
+        //public List<int> PhoneNumbers { get; } = new List<int>();
+        public virtual ICollection<Invoice> Invoices { get; set; }
+        public virtual ICollection<Phone> PhoneNumbers { get; set; } = new List<Phone>();
 
         public Customer() { }
 
-        public Customer(int id, string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city, int[] phoneNumbers)
+        public Customer(int id, string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city, Phone[] phoneNumbers)
         {
             CustomerId = id;
             FirstName = firstName;
@@ -49,16 +52,16 @@ namespace MbmStore.Models
 
             if (phoneNumbers != null)
             {
-                foreach (int phoneNumber in phoneNumbers)
+                foreach (Phone phone in phoneNumbers)
                 {
-                    AddPhone(phoneNumber);
+                    AddPhone(phone);
                 }
             }
         }
 
-        public void AddPhone(int phoneNumber)
+        public void AddPhone(Phone phone)
         {
-            PhoneNumbers.Add(phoneNumber);
+            PhoneNumbers.Add(phone);
         }
 
         public static int CalculateAge(DateTime birthDate)

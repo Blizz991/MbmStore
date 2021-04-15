@@ -12,7 +12,7 @@
 <h1>Customer Index</h1>
 @foreach (var customer in ViewBag.Customers)
 {
-    <p>@customer.FirstName @customer.LastName - @customer.Age år</p>
+    <p>@customer.FirstName @customer.LastName - @customer.Age år (@customer.BirthDate.ToShortDateString())</p>
     <address>
         @customer.Address
         <br />
@@ -23,12 +23,10 @@
         @foreach (var phoneNumber in customer.PhoneNumbers)
         {
             <li>
-                <a href="tel:@phoneNumber">@phoneNumber</a>
+                <a href="tel:@phoneNumber.Number">@phoneNumber.Number</a>
             </li>
         }
     </ul>
     <hr />
 
 }
-
-
