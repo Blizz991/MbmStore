@@ -13,27 +13,6 @@ namespace MbmStore.Models
         // constructors
         public Movie() { }
 
-        public Movie(string title, decimal price)
-        {
-            Title = title;
-            Price = price;
-        }
-
-        public Movie(string title, decimal price, string director)
-        {
-            Title = title;
-            Price = price;
-            Director = director;
-        }
-
-        public Movie(string title, decimal price, string director, string imageFileName)
-        {
-            Title = title;
-            Price = price;
-            Director = director;
-            ImageFileName = imageFileName;
-        }
-
         public Movie(int productId, string title, decimal price, string director, string imageFileName)
         {
             Title = title;

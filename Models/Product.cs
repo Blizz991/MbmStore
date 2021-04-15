@@ -30,19 +30,6 @@ namespace MbmStore.Models
 
         public Product() { }
 
-        public Product(string title, decimal price)
-        {
-            Title = title;
-            this.price = price;
-        }
-
-        public Product(string title, decimal price, string imageFileName)
-        {
-            Title = title;
-            this.price = price;
-            ImageFileName = imageFileName;
-        }
-
         public Product(int productId ,string title, decimal price, string imageFileName)
         {
             ProductId = productId;

@@ -7,7 +7,6 @@ namespace MbmStore.Models
 {
     public class Customer
     {
-        // properties
         public int CustomerId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -34,23 +33,8 @@ namespace MbmStore.Models
         public int ZipCode { get; set; }
         public string City { get; set; }
         public List<int> PhoneNumbers { get; } = new List<int>();
-        //public int PhoneNumber { get; set; }
 
         public Customer() { }
-
-        //public Customer(string firstName, string lastName, string address, int zipCode, string city, int phoneNumber)
-        public Customer(int id, string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city)
-        {
-            CustomerId = id;
-            FirstName = firstName;
-            LastName = lastName;
-            BirthDate = birthDate;
-            Age = CalculateAge(birthDate);
-            Address = address;
-            ZipCode = zipCode;
-            City = city;
-            //PhoneNumber = phoneNumber;
-        }
 
         public Customer(int id, string firstName, string lastName, DateTime birthDate, string address, int zipCode, string city, int[] phoneNumbers)
         {

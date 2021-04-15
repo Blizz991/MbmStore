@@ -20,25 +20,6 @@ namespace MbmStore.Models
 
         public MusicCD() { }
 
-        public MusicCD(int productId, string artist, string title, decimal price, string publisher)
-        {
-            Artist = artist;
-            Title = title;
-            Price = price;
-            Publisher = publisher;
-            ProductId = productId;
-        }
-
-        public MusicCD(int productId, string artist, string title, decimal price, string publisher, string imageFileName)
-        {
-            Artist = artist;
-            Title = title;
-            Price = price;
-            Publisher = publisher;
-            ImageFileName = imageFileName;
-            ProductId = productId;
-        }
-
         public MusicCD(int productId, string artist, string title, decimal price, string publisher, string imageFileName, Track[] tracks)
         {
             Artist = artist;
