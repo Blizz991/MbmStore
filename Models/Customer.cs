@@ -12,6 +12,7 @@ namespace MbmStore.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         private DateTime _birthDate;
+        [Column(TypeName = "datetime2")]
         public DateTime BirthDate
         {
             set

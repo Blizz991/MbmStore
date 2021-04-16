@@ -30,6 +30,8 @@ namespace MbmStore.Models
             ImageFileName = imageFileName;
             ProductId = productId;
             Category = category;
+
         }
+
     }
 }

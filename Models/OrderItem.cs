@@ -12,6 +12,7 @@ namespace MbmStore.Models
         public Product Product { get; set; }
         public int Quantity { get; set; }
         public decimal TotalPrice { get; }
+        public virtual int InvoiceId { get; set; }
 
         public OrderItem() { }
 

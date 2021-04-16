@@ -7,9 +7,12 @@ namespace MbmStore.Models
 {
     public class Track
     {
+        public int TrackId { get; set; }
         public string Title { get; set; }
         public string Composer { get; set; }
         public TimeSpan Length { get; set; }
+        public int ProductId { get; set; }
+
 
         public Track() { }
 

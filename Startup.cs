@@ -1,8 +1,10 @@
+using MbmStore.Data;
 using MbmStore.Models;
 using MbmStore.Models.ViewModels;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -26,6 +28,8 @@ namespace Lesson01
             services.AddControllersWithViews();
             services.AddMemoryCache();
             services.AddSession();
+
+            services.AddDbContext<MbmStoreContext>(options => options.UseSqlServer(Configuration.GetConnectionString("MbmStoreContext")));
 
             CultureInfo cultureInfo = CultureInfo.GetCultureInfo("da-DK");
             CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
