@@ -66,6 +66,11 @@ namespace Lesson01
                 );
 
                 endpoints.MapControllerRoute(
+                    name: "areas",
+                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+                );
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Catalogue}/{action=Index}/{id?}"
                 );
