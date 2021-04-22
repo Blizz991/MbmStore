@@ -7,21 +7,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MbmStore.Models.ViewModels;
+using MbmStore.Data;
 
 namespace MbmStore.Controllers
 {
     public class CartController : Controller
     {
         private Cart cart;
+        private MbmStoreContext dataContext;
 
-        public CartController(Cart cartservice)
+        public CartController(Cart cartservice, MbmStoreContext dbContext)
         {
             cart = cartservice;
+            dataContext = dbContext;
         }
 
         private Product GetProduct(int productId)
         {
-            return Repository.Products.FirstOrDefault(p => p.ProductId == productId);
+            return dataContext.Products.FirstOrDefault(p => p.ProductId == productId);
         }
 
         public RedirectToActionResult AddToCart(int productId, int quantity, string returnUrl)
@@ -72,11 +75,5 @@ namespace MbmStore.Controllers
                 }
             );
         }
-
-        //private Cart cart;
-        //public CartController(Cart cartService) { cart = cartService; }
-        //public ViewResult Index(string returnUrl) { return View(new CartIndexViewModel{ Cart = cart, ReturnUrl = returnUrl}); }
-        //public RedirectToActionResult AddToCart(int productID, string returnUrl) { Product product = Repository.Products.FirstOrDefault(p => p.ProductId == productID); if (product != null) { cart.AddItem(product, 1); } return RedirectToAction("Index", new { returnUrl }); }
-        //public RedirectToActionResult RemoveFromCart(int productID, string returnUrl){ Product product = Repository.Products.FirstOrDefault(p => p.ProductId == productID); if (product != null) { cart.RemoveLine(product); } return RedirectToAction("Index", new { returnUrl }); }
     }
 }
