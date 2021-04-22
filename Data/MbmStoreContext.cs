@@ -84,7 +84,7 @@ namespace MbmStore.Data
                 );
 
                 modelBuilder.Entity<Track>().HasData(
-                    new Track { TrackId = 1, Title = "Come Together", Composer = "Someone1", Length = new TimeSpan(0, 0, 2, 28), ProductId = 3 },
+                    new Track { TrackId = 1, Title = "Come Together", Composer = "Someone1", Length = new TimeSpan(0, 0, 2, 28), ProductId = 3},
                     new Track { TrackId = 2, Title = "Something", Composer = "Someone2", Length = new TimeSpan(0, 0, 1, 28), ProductId = 3 },
                     new Track { TrackId = 3, Title = "Maxwell's Silver Hammer", Composer = "Someone1", Length = new TimeSpan(0, 0, 2, 38), ProductId = 3 },
                     new Track { TrackId = 4, Title = "Oh! Darling", Composer = "Someone3", Length = new TimeSpan(0, 0, 2, 57), ProductId = 3 },

@@ -7,7 +7,7 @@ namespace MbmStore.Models
 {
     public class MusicCD : Product
     {
-        public ICollection<Track> Tracks { get; } = new List<Track>();
+        public virtual ICollection<Track> Tracks { get; } = new List<Track>();
         //public List<Track> Tracks { get; } = new List<Track>();
         public string Artist { get; set; }
         public string Label { get; set; }
