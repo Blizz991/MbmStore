@@ -30,7 +30,12 @@ namespace MbmStore.Models
             }
             get { return _birthDate; }
         }
-        public int Age { get; }
+        public int Age {
+            get
+            {
+                return CalculateAge(BirthDate);
+            }
+        }
         public string Address { get; set; }
         public int ZipCode { get; set; }
         public string City { get; set; }
@@ -46,7 +51,6 @@ namespace MbmStore.Models
             FirstName = firstName;
             LastName = lastName;
             BirthDate = birthDate;
-            Age = CalculateAge(birthDate);
             Address = address;
             ZipCode = zipCode;
             City = city;
