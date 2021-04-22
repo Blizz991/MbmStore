@@ -11,7 +11,13 @@ namespace MbmStore.Models
         public int ProductId { get; set; }
         public Product Product { get; set; }
         public int Quantity { get; set; }
-        public decimal TotalPrice { get; }
+        public decimal TotalPrice
+        {
+            get
+            {
+                return CalculateTotalPrice(Product, Quantity);
+            }
+        }
         public virtual int InvoiceId { get; set; }
 
         public OrderItem() { }
@@ -20,8 +26,6 @@ namespace MbmStore.Models
         {
             Product = product;
             Quantity = quantity;
-
-            TotalPrice = CalculateTotalPrice(product, quantity);
         }
 
         public static decimal CalculateTotalPrice(Product product, int quantity)
@@ -31,7 +35,8 @@ namespace MbmStore.Models
             if (product != null)
             {
                 totalPrice = product.Price * quantity;
-            }else
+            }
+            else
             {
                 totalPrice = 0;
             }
